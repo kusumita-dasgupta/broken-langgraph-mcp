@@ -220,7 +220,7 @@ async def call_tool(state: AgentState) -> AgentState:
     state["last_error"] = None
     state["audit"].append({"tool": tool, "args": args, "ok": True, "result": val})
 
-    # ✅ DEMO FIX: empty search is "recovery failed", not OK
+    # DEMO FIX: empty search is "recovery failed", not OK
     if tool == "search_files" and isinstance(val, list) and len(val) == 0:
         state["final_answer"] = (
             "Recovered gracefully from a tool failure:\n"
